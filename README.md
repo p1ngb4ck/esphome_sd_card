@@ -11,6 +11,8 @@ To use any of these components in _your_ ESPHome device, check out the documenta
 The main component, allow reading and writing to the SD card. It also provide some sensors and other utilities to manipulate the card.
 
 basic configuration:
+
+SDMMC mode
 ```yaml
 sd_mmc_card:
   id: sd_mmc_card
@@ -21,6 +23,18 @@ sd_mmc_card:
   data1_pin: GPIO4
   data2_pin: GPIO12
   data3_pin: GPIO13
+```
+
+SPI mode
+```yaml
+spi:
+  - mosi_pin: GPIO18
+    miso_pin: GPIO20
+    clk_pin: GPIO19
+sd_mmc_card:
+  id: sd_spi_card
+  type: sd_spi
+  data3_pin: GPIO23
 ```
 
 ### [sd_file_server](components/sd_file_server/README.md)
