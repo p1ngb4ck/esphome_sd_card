@@ -5,8 +5,8 @@ from esphome.components.web_server_base import CONF_WEB_SERVER_BASE_ID
 from esphome.const import (
     CONF_ID
 )
-from esphome.core import coroutine_with_priority, CORE
-from .. import sd_mmc_card
+from esphome.core import coroutine_with_priority
+from esphome.components import sd_mmc_card
 
 CONF_URL_PREFIX = "url_prefix"
 CONF_ROOT_PATH = "root_path"
@@ -39,9 +39,9 @@ CONFIG_SCHEMA = cv.All(
 
 @coroutine_with_priority(45.0)
 async def to_code(config):
-    paren = await cg.get_variable(config[CONF_WEB_SERVER_BASE_ID])
+    parent = await cg.get_variable(config[CONF_WEB_SERVER_BASE_ID])
     
-    var = cg.new_Pvariable(config[CONF_ID], paren)
+    var = cg.new_Pvariable(config[CONF_ID], parent)
     await cg.register_component(var, config)
     sdmmc = await cg.get_variable(config[sd_mmc_card.CONF_SD_MMC_CARD_ID])
     cg.add(var.set_sd_mmc_card(sdmmc))
