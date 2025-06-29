@@ -87,4 +87,4 @@ esp32:
 ## Contributors
 [<img src="https://github.com/elproko.png" width="30px;" style="border-radius: 50%;" title="elproko"/>](https://github.com/elproko)
 [<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/youkorr)
-[<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/asergunov)
+[<img src="https://github.com/asergunov.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/asergunov)
