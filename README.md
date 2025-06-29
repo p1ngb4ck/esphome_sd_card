@@ -54,7 +54,7 @@ sd_file_server:
 
 ### Notes
 
-SD MMC is only supported by ESP32 and ESP32-S3 board.
+SD MMC is only supported by ESP32 and ESP32-S3 board. For ESP32-C6 please use SPI mode. SPI mode supported in esp-idf framework. Feel free to contibute Arduino support.
 
 #### Arduino Framework
 
@@ -87,3 +87,4 @@ esp32:
 ## Contributors
 [<img src="https://github.com/elproko.png" width="30px;" style="border-radius: 50%;" title="elproko"/>](https://github.com/elproko)
 [<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/youkorr)
+[<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/asergunov)
