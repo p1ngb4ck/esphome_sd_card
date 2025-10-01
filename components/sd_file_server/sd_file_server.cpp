@@ -285,7 +285,11 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         break;
       case HTTP_POST:
       case HTTP_PUT:
-        this->handleUpload(request);
+        //const String filename;
+        //if (request->hasParam("file", true, true) {
+        //  filename = request->getParam("file", true, true)->value();
+        //}
+        //this->handleUpload(request, filename, , );
       default:
         break;
     }
