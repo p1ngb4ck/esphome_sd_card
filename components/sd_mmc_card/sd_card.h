@@ -65,14 +65,14 @@ class SdCard {
   virtual bool delete_file(const char *path) { return false; }
   virtual bool create_directory(const char *path) { return false; }
   virtual bool remove_directory(const char *path) { return false; }
-  virtual std::vector<uint8_t> read_file(char const *path) { return std::vector<uint8_t> = {}; };
+  virtual std::vector<uint8_t> read_file(char const *path) { std::vector<uint8_t> ret = {}; return ret; };
   virtual bool is_directory(const char *path) { return false; };
-  virtual size_t file_size(const char *path) { return size_t file_size = 0; };
+  virtual size_t file_size(const char *path) { return 0; };
 
  protected:
   virtual std::vector<FileInfo> &list_directory_file_info_rec(const char *path, uint8_t depth,
                                                               std::vector<FileInfo> &list) 
-            { return std::vector<FileInfoi> file_info = {}; };
+            { std::vector<FileInfo> file_info = {}; return file_info; };
 };
 }  // namespace sd_mmc_card
 }  // namespace esphome
