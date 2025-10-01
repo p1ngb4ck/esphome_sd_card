@@ -60,10 +60,10 @@ void SdMmc::setup() {
     mark_failed();
     return;
   }
-
+  esp_err_t ret = ESP_FAIL;
   for (int attempt = 1; attempt <= 3; attempt++) {
     ESP_LOGI(TAG, "Mounting SD Card on slot %d (attempt %d/3)...", this->slot_, attempt);
-    auto ret = esp_vfs_fat_sdmmc_mount(MOUNT_POINT.c_str(), &host, &slot_config, &mount_config, &this->card_);
+    ret = esp_vfs_fat_sdmmc_mount(MOUNT_POINT.c_str(), &host, &slot_config, &mount_config, &this->card_);
     if (ret == ESP_OK) {
       ESP_LOGI(TAG, "SD Card mounted successfully on slot %d!", this->slot_);
       break;
