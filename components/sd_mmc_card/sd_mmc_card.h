@@ -89,7 +89,7 @@ class SdMmc : public Component, public SdCard {
   uint8_t data3_pin_;
   bool mode_1bit_;
   GPIOPin *power_ctrl_pin_{nullptr};
-  uint8_t slot_ = 0; 
+  uint8_t slot_{0}; 
 
 #ifdef USE_ESP_IDF
   sdmmc_card_t *card_;
