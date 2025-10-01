@@ -72,7 +72,7 @@ class SdCard {
  protected:
   virtual std::vector<FileInfo> &list_directory_file_info_rec(const char *path, uint8_t depth,
                                                               std::vector<FileInfo> &list) 
-            { return {}; };
+            { return list; };
 };
 }  // namespace sd_mmc_card
 }  // namespace esphome
