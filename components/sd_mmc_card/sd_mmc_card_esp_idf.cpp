@@ -262,3 +262,4 @@ void SdMmc::update_sensors() {
 
 #endif  // USE_ESP_IDF
 #endif // SDMMC_USE_SDMMC
+#endif // USE_ESP32_VARIANT_ESP32S2 || USE_ESP32_VARIANT_ESP32S3 || USE_ESP32_VARIANT_ESP32P4
