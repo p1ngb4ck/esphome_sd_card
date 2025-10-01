@@ -88,7 +88,7 @@ void SdMmc::setup() {
       ESP_LOGE(TAG, "No SD card detected on slot %d", this->slot_);
     }
     mark_failed();
-
+  }
 #ifdef USE_TEXT_SENSOR
   if (this->sd_card_type_text_sensor_ != nullptr)
     this->sd_card_type_text_sensor_->publish_state(sd_card_type());
