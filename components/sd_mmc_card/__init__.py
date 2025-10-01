@@ -17,8 +17,10 @@ from esphome.core import CORE
 from esphome.components.esp32 import get_esp32_variant
 from esphome.components.esp32.const import (
     VARIANT_ESP32,
+    VARIANT_ESP32S2,
     VARIANT_ESP32S3,
     VARIANT_ESP32C6,
+    VARIANT_ESP32P4,
 )
 from esphome.components import spi
 import esphome.final_validate as fv
