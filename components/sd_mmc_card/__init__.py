@@ -37,6 +37,7 @@ CONF_DATA3_PIN = "data3_pin"
 CONF_MODE_1BIT = "mode_1bit"
 CONF_POWER_CTRL_PIN = "power_ctrl_pin"
 CONF_SPI_INTERFACE = "_spi_interface"
+CONF_SLOT = "slot"
 
 sd_mmc_card_component_ns = cg.esphome_ns.namespace("sd_mmc_card")
 SdCard = sd_mmc_card_component_ns.class_("SdCard")
@@ -77,6 +78,7 @@ SD_MMC_SCHEMA = cv.Schema(
         cv.Optional(CONF_DATA2_PIN): pins.internal_gpio_pin_number,
         cv.Optional(CONF_DATA3_PIN): pins.internal_gpio_pin_number,
         cv.Optional(CONF_MODE_1BIT, default=False): cv.boolean,
+        cv.Optional(CONF_SLOT, default=0): cv.int_range(min=0, max=1), 
         cv.Optional(CONF_POWER_CTRL_PIN) : pins.gpio_pin_schema({
             CONF_OUTPUT: True,
             CONF_PULLUP: False,
@@ -158,6 +160,8 @@ async def to_code(config):
 
     if mode_1bit := config.get(CONF_MODE_1BIT):
         cg.add(var.set_mode_1bit(mode_1bit))
+    if slot := config.get(CONF_SLOT):
+        cg.add(var.set_slot(config[CONF_SLOT]))
     if clk_pin := config.get(CONF_CLK_PIN):
         cg.add(var.set_clk_pin(clk_pin))
     if cmd_pin := config.get(CONF_CMD_PIN):
