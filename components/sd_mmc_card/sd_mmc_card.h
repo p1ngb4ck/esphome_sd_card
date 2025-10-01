@@ -77,6 +77,7 @@ class SdMmc : public Component, public SdCard {
   void set_data3_pin(uint8_t);
   void set_mode_1bit(bool);
   void set_power_ctrl_pin(GPIOPin *);
+  void set_slot(uint8_t slot) { this->slot_ = slot; }
 
  protected:
   ErrorCode init_error_;
