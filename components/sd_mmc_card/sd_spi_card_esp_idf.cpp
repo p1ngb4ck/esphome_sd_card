@@ -54,9 +54,6 @@ void SdSpi::dump_config() {
       LOG_SENSOR("  ", "File size", sensor.sensor);
   }
 #endif
-#ifdef USE_TEXT_SENSOR
-  LOG_TEXT_SENSOR("  ", "SD Card Type", this->sd_card_type_text_sensor_);
-#endif
 
   if (this->is_failed()) {
     ESP_LOGE(TAG, "Setup failed : %s", SdSpi::error_code_to_string(this->init_error_).c_str());
@@ -157,12 +154,7 @@ void SdSpi::setup() {
     mark_failed();
     return;
   }
-
-#ifdef USE_TEXT_SENSOR
-  if (this->sd_card_type_text_sensor_ != nullptr)
-    this->sd_card_type_text_sensor_->publish_state(sd_card_type());
-#endif
-
+    
 #ifdef USE_SENSOR
   if (this->max_frequency_sensor_)
     this->max_frequency_sensor_->publish_state(this->card_->max_freq_khz);
