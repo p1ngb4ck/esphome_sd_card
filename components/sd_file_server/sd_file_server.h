@@ -31,7 +31,7 @@ class SDFileServer : public Component, public AsyncWebHandler {
   bool canHandle(AsyncWebServerRequest *request) const override;
   void handleRequest(AsyncWebServerRequest *request) override;
   void handleUpload(AsyncWebServerRequest *request, const String &filename, size_t index, uint8_t *data, size_t len,
-                    bool final) override;
+                    bool final = true) override;
   bool isRequestHandlerTrivial() const override { return false; }
 
   void set_url_prefix(std::string const &);
