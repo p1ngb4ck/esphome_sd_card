@@ -266,7 +266,7 @@ void SdMmc::update_sensors() {
 
   for (auto &sensor : this->file_size_sensors_) {
     if (sensor.sensor != nullptr)
-      sensor.sensor->publish_state(this->file_size(sensor.path));
+      sensor.sensor->publish_state(this->file_size(sensor.path.c_str()));
   }
 #endif
 }
