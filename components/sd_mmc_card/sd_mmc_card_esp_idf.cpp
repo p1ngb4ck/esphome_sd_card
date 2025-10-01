@@ -58,17 +58,36 @@ void SdMmc::setup() {
   // connected on the bus. This is for debug / example purpose only.
   slot_config.flags |= SDMMC_SLOT_FLAG_INTERNAL_PULLUP;
 
-  auto ret = esp_vfs_fat_sdmmc_mount(MOUNT_POINT.c_str(), &host, &slot_config, &mount_config, &this->card_);
+  ESP_LOGI(TAG, "Initializing SDMMC slot %d", this->slot_);
+
+  esp_err_t slot_init = sdmmc_host_init_slot(host.slot, &slot_config);
+  if (slot_init != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to initialize slot %d: %s", this->slot_, esp_err_to_name(slot_init));
+    this->init_error_ = ErrorCode::ERR_PIN_SETUP;
+    mark_failed();
+    return;
+  }
+
+  for (int attempt = 1; attempt <= 3; attempt++) {
+    ESP_LOGI(TAG, "Mounting SD Card on slot %d (attempt %d/3)...", this->slot_, attempt);
+    auto ret = esp_vfs_fat_sdmmc_mount(MOUNT_POINT.c_str(), &host, &slot_config, &mount_config, &this->card_);
+    if (ret == ESP_OK) {
+      ESP_LOGI(TAG, "SD Card mounted successfully on slot %d!", this->slot_);
+      break;
+    }
+    ESP_LOGW(TAG, "Mount attempt %d failed: %s", attempt, esp_err_to_name(ret));
+    vTaskDelay(pdMS_TO_TICKS(100));  // Pause entre tentatives
+  }
 
   if (ret != ESP_OK) {
     if (ret == ESP_FAIL) {
       this->init_error_ = ErrorCode::ERR_MOUNT;
+      ESP_LOGE(TAG, "Failed to mount filesystem on SD card (slot %d)", this->slot_);
     } else {
       this->init_error_ = ErrorCode::ERR_NO_CARD;
+      ESP_LOGE(TAG, "No SD card detected on slot %d", this->slot_);
     }
     mark_failed();
-    return;
-  }
 
 #ifdef USE_TEXT_SENSOR
   if (this->sd_card_type_text_sensor_ != nullptr)
