@@ -96,7 +96,7 @@ esp_err_t get_handler(httpd_req_t *req) {
 
 void SDFileServer::setup() { 
   this->base_->add_handler(this);
-  this->base_->onFileUpload(this->handleUpload);
+  this->onFileUpload(this->handleUpload);
 }
 
 void SDFileServer::dump_config() {
