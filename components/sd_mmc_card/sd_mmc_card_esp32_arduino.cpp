@@ -1,4 +1,3 @@
-#if defined(USE_ESP32_VARIANT_ESP32S2) || defined(USE_ESP32_VARIANT_ESP32S3) || defined(USE_ESP32_VARIANT_ESP32C6) || defined(USE_ESP32_VARIANT_ESP32P4)
 #include "sd_mmc_card.h"
 
 #ifdef SDMMC_USE_SDMMC
@@ -194,4 +193,3 @@ void SdMmc::update_sensors() {
 
 #endif  // USE_ESP32_FRAMEWORK_ARDUINO
 #endif // SDMMC_USE_SDMMC
-#endif // USE_ESP32_VARIANT_ESP32S2 || USE_ESP32_VARIANT_ESP32S3 || USE_ESP32_VARIANT_ESP32P4
