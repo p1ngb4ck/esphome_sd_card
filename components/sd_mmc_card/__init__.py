@@ -161,7 +161,7 @@ async def to_code(config):
     if mode_1bit := config.get(CONF_MODE_1BIT):
         cg.add(var.set_mode_1bit(mode_1bit))
     if slot := config.get(CONF_SLOT):
-        if config[CONF_TYPE] == TYPE_SD_SPI
+        if config[CONF_TYPE] == TYPE_SD_SPI:
             raise cv.Invalid(f"config option `slot` is only available for sd-mmc type")
         else
             cg.add(var.set_slot(config[CONF_SLOT]))
