@@ -292,7 +292,8 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
           filename = request->getParam("filename", true)->value().c_str();
         }
         //this->handleUpload(request, filename, , );
-        unsigned char* json_body = printf("{ \"success\": \"file %s uploaded\" }", filename);
+        const char* json_body;
+        sprintf(json_body, "{ \"success\": \"file %s uploaded\" }", filename);
         request->send(200, "application/json", json_body);
       default:
         break;
