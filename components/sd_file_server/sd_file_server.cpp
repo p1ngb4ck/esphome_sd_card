@@ -278,13 +278,13 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
     switch (request->method()) {
       case HTTP_GET:
         this->handle_get(request);
-        break;
+        return;
       // case HTTP_HEAD:
       //   this->handle_get(request, true);
       //   break;
       case HTTP_DELETE:
         this->handle_delete(request);
-        break;
+        return;
       case HTTP_POST:
       case HTTP_PUT:
         std::string filename;
@@ -297,7 +297,7 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         request->send(200, "application/json", json_body);
         return;
       default:
-        break;
+        return;
     }
   }
 }
