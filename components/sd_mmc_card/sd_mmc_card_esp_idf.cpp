@@ -34,12 +34,6 @@ void SdMmc::setup() {
   host.max_freq_khz = SDMMC_FREQ_HIGHSPEED;
   sdmmc_slot_config_t slot_config = SDMMC_SLOT_CONFIG_DEFAULT();
 
-  if (this->mode_1bit_) {
-    slot_config.width = 1;
-  } else {
-    slot_config.width = 4;
-  }
-
 #ifdef SOC_SDMMC_USE_GPIO_MATRIX
   slot_config.clk = static_cast<gpio_num_t>(this->clk_pin_);
   slot_config.cmd = static_cast<gpio_num_t>(this->cmd_pin_);
