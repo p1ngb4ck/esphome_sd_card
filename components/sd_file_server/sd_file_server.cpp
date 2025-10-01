@@ -280,7 +280,7 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         this->handle_get(request);
         return;
       case HTTP_HEAD:
-        this->handle_get(request, true);
+        this->handle_get(request);
         break;
       case HTTP_DELETE:
         this->handle_delete(request);
