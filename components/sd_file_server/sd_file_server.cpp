@@ -96,7 +96,7 @@ esp_err_t get_handler(httpd_req_t *req) {
 
 void SDFileServer::setup() { 
   this->base_->add_handler(this);
-  this->onFileUpload(this->handleUpload);
+  this->base_->(this->handleUpload);
 }
 
 void SDFileServer::dump_config() {
@@ -286,13 +286,14 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
       case HTTP_DELETE:
         this->handle_delete(request);
         break;
-      //case HTTP_POST:
-      //case HTTP_PUT:
-        //const String filename;
-        //if (request->hasParam("file", true, true) {
-        //  filename = request->getParam("file", true, true)->value();
-        //}
+      case HTTP_POST:
+      case HTTP_PUT:
+        const String filename;
+        if (request->hasParam("file", true, true) {
+          filename = request->getParam("filename", true)->value().c_str();
+        }
         //this->handleUpload(request, filename, , );
+        request->send(200, "application/json", "{ \"success\": \"file %s uploaded\", filename}");
       default:
         break;
     }
