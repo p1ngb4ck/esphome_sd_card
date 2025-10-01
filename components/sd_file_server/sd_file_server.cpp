@@ -286,7 +286,6 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         this->handle_delete(request);
         break;
       case HTTP_POST:
-      case HTTP_PUT:
         std::string filename;
         if (request->hasParam("file")) {
           filename = request->getParam("filename")->value();
