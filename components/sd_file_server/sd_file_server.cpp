@@ -283,6 +283,9 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
       case HTTP_DELETE:
         this->handle_delete(request);
         break;
+      case HTTP_POST:
+      case HTTP_PUT:
+        this->handleUpload(request);
       default:
         break;
     }
@@ -295,6 +298,9 @@ void SDFileServer::handleUpload(AsyncWebServerRequest *request, const String &fi
     request->send(401, "application/json", "{ \"error\": \"file upload is disabled\" }");
     return;
   }
+  if (!request->_tempObject) {
+        return request->send(400, "text/plain", "Nothing uploaded");
+  
   std::string extracted = this->extract_path_from_url(std::string(request->url().c_str()));
   std::string path = this->build_absolute_path(extracted);
   ESP_LOGV(TAG, "Upload requested for url %s, path is %s", request->url().c_str(), path.c_str());
@@ -392,6 +398,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
   <head>
     <meta charset=UTF-8>
     <meta name=viewport content=\"width=device-width, initial-scale=1,user-scalable=no\">
+    <link rel="icon" type="image/x-icon" href="/file/favicon.ico">
     <title>SD Card Files</title>
     <style>
     body {
