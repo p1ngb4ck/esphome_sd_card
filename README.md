@@ -88,3 +88,5 @@ esp32:
 [<img src="https://github.com/elproko.png" width="30px;" style="border-radius: 50%;" title="elproko"/>](https://github.com/elproko)
 [<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/youkorr)
 [<img src="https://github.com/asergunov.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/asergunov)
+[<img src="https://github.com/Yax.png" width="30px;" style="border-radius: 50%;" title="Yax"/>](https://github.com/Yax)
+[<img src="https://github.com/p1ngb4ck.png" width="30px;" style="border-radius: 50%;" title="p1ngb4ck"/>](https://github.com/p1ngb4ck)
