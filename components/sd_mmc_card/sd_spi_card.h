@@ -15,9 +15,6 @@
 #ifdef USE_SENSOR
 #include "esphome/components/sensor/sensor.h"
 #endif
-#ifdef USE_TEXT_SENSOR
-#include "esphome/components/text_sensor/text_sensor.h"
-#endif
 
 #ifdef USE_ESP_IDF
 #include "sdmmc_cmd.h"
@@ -45,9 +42,6 @@ spi::DATA_RATE_10MHZ>, public Component, public SdCard {
   SUB_SENSOR(free_space)
   SUB_SENSOR(max_frequency)
   SUB_SENSOR(real_frequency)
-#endif
-#ifdef USE_TEXT_SENSOR
-  SUB_TEXT_SENSOR(sd_card_type)
 #endif
  public:
   enum ErrorCode {
