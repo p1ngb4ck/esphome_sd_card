@@ -186,7 +186,6 @@ async def to_code(config):
 
     elif config[CONF_TYPE] == TYPE_SD_MMC:
         cg.add_define("SDMMC_USE_SDMMC")
-        cg.add_define("SDMMC_HOST_DEFAULT")
         if (config[CONF_MODE_1BIT] == False):
             cg.add(var.set_data1_pin(config[CONF_DATA1_PIN]))
             cg.add(var.set_data2_pin(config[CONF_DATA2_PIN]))
