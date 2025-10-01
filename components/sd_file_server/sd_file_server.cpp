@@ -286,15 +286,16 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         this->handle_delete(request);
         break;
       case HTTP_POST:
+      case HTTP_PUT:
         std::string filename;
         if (request->hasParam("file")) {
           filename = request->getParam("filename")->value();
         }
-        //this->handleUpload(request, filename, , );
+        // this->handleUpload(request, filename, , );
         char* json_body;
         sprintf(json_body, "{ \"success\": \"file %s uploaded\" }", filename.c_str());
         request->send(200, "application/json", json_body);
-        break;
+        return;
       default:
         break;
     }
