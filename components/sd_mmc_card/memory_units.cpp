@@ -1,3 +1,4 @@
+#if defined(USE_ESP32_VARIANT_ESP32S2) || defined(USE_ESP32_VARIANT_ESP32S3) || defined(USE_ESP32_VARIANT_ESP32C6) || defined(USE_ESP32_VARIANT_ESP32P4)
 #include "memory_units.h"
 
 #include <math.h>
@@ -46,3 +47,4 @@ std::string format_size(size_t size) {
 
 }  // namespace sd_mmc_card
 }  // namespace esphome
+#endif // USE_ESP32_VARIANT_ESP32S2 || USE_ESP32_VARIANT_ESP32S3 || use ESP32_VARIANT_C6 || USE ESP32_VARIANT_ESP32P4
