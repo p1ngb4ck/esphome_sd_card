@@ -79,6 +79,7 @@ spi::DATA_RATE_10MHZ>, public Component, public SdCard {
 
   void set_data1_pin(GPIOPin *pin) { this->data1_pin_ = pin; }
   void set_data2_pin(GPIOPin *pin) { this->data2_pin_ = pin; }
+  void set_slot(uint8_t slot) { return; }
 
  protected:
   ErrorCode init_error_;
