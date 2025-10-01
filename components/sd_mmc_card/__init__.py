@@ -213,9 +213,9 @@ SD_MMC_WRITE_FILE_ACTION_SCHEMA = cv.Schema(
 ).extend(SD_MMC_PATH_ACTION_SCHEMA)
 
 def _final_validate(config):
-    spi_id = config[spi.CONF_SPI_ID]
     if config[CONF_TYPE] != TYPE_SD_SPI:
         return
+    spi_id = config[spi.CONF_SPI_ID]
     if spi_configs := fv.full_config.get().get(CONF_SPI):
         for spi_conf in spi_configs:
             if spi_conf[spi.CONF_ID] != spi_id:
