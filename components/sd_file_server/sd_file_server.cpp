@@ -94,7 +94,10 @@ esp_err_t get_handler(httpd_req_t *req) {
   return ESP_OK;
 }
 
-void SDFileServer::setup() { this->base_->add_handler(this); }
+void SDFileServer::setup() { 
+  this->base_->add_handler(this);
+  this->
+}
 
 void SDFileServer::dump_config() {
   ESP_LOGCONFIG(TAG, "SD File Server:");
@@ -283,8 +286,8 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
       case HTTP_DELETE:
         this->handle_delete(request);
         break;
-      case HTTP_POST:
-      case HTTP_PUT:
+      //case HTTP_POST:
+      //case HTTP_PUT:
         //const String filename;
         //if (request->hasParam("file", true, true) {
         //  filename = request->getParam("file", true, true)->value();
