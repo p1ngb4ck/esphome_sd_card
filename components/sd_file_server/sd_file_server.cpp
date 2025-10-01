@@ -297,8 +297,9 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         request->send(200, "application/json", json_body);
         return;
       default:
-        return;
+        break;
     }
+    return;
   }
 }
 
