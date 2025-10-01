@@ -76,7 +76,7 @@ void SdMmc::setup() {
       break;
     }
     ESP_LOGW(TAG, "Mount attempt %d failed: %s", attempt, esp_err_to_name(ret));
-    vTaskDelay(pdMS_TO_TICKS(100));  // Pause entre tentatives
+    vTaskDelay(pdMS_TO_TICKS(100));
   }
 
   if (ret != ESP_OK) {
