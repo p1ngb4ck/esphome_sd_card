@@ -160,11 +160,6 @@ async def to_code(config):
 
     if mode_1bit := config.get(CONF_MODE_1BIT):
         cg.add(var.set_mode_1bit(mode_1bit))
-    if slot := config.get(CONF_SLOT):
-        if config[CONF_TYPE] == TYPE_SD_SPI:
-            raise cv.Invalid(f"config option `slot` is only available for sd-mmc type")
-        else
-            cg.add(var.set_slot(config[CONF_SLOT]))
     if clk_pin := config.get(CONF_CLK_PIN):
         cg.add(var.set_clk_pin(clk_pin))
     if cmd_pin := config.get(CONF_CMD_PIN):
@@ -186,6 +181,8 @@ async def to_code(config):
             cg.add(var.set_data1_pin(await cg.gpio_pin_expression(pin)))
         if pin := config.get(CONF_DATA2_PIN):
             cg.add(var.set_data2_pin(await cg.gpio_pin_expression(pin)))
+        if slot := config.get(CONF_SLOT):
+            raise cv.Invalid(f"config option `slot` is only available for sd-mmc type")
 
     elif config[CONF_TYPE] == TYPE_SD_MMC:
         cg.add_define("SDMMC_USE_SDMMC")
@@ -193,8 +190,8 @@ async def to_code(config):
             cg.add(var.set_data1_pin(config[CONF_DATA1_PIN]))
             cg.add(var.set_data2_pin(config[CONF_DATA2_PIN]))
             cg.add(var.set_data3_pin(config[CONF_DATA3_PIN]))
-
-
+            if slot := config.get(CONF_SLOT):
+                cg.add(var.set_slot(config[CONF_SLOT]))
 
     if CORE.using_arduino:
         if CORE.is_esp32:
