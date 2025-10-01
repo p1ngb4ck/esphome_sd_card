@@ -80,8 +80,6 @@ SD_MMC_SCHEMA = cv.Schema(
             CONF_PULLUP: False,
             CONF_PULLDOWN: False,
         }),
-        cv.only_with_esp_idf,
-            only_on_variant(supported=[VARIANT_ESP32S2, VARIANT_ESP32S3, VARIANT_ESP32C6, VARIANT_ESP32P4]),
     }
 ).extend(cv.COMPONENT_SCHEMA)
 
@@ -133,8 +131,8 @@ SD_SPI_SCHEMA = cv.Schema(
 
 def validate_config(config):
     variant = get_esp32_variant()
-    if variant == VARIANT_ESP32C6 and config.get(CONF_TYPE) != TYPE_SD_SPI:
-        raise cv.Invalid(f"esp32c6 doesn't have sdmmc host support. Please use `type: sd_spi`")
+    if (variant != VARIANT_ESP32S2 and variant != VARIANT_ESP32S3 and variant != ESP32P3) and config.get(CONF_TYPE) != TYPE_SD_SPI:
+        raise cv.Invalid(f"sdmmc host is only currently onlky supported on ESP32S2/S3/P4. Please use `type: sd_spi`")
 
     if not CORE.is_esp32:
         return
