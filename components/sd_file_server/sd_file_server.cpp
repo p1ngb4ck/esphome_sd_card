@@ -296,8 +296,6 @@ void SDFileServer::handleRequest(AsyncWebServerRequest *request) {
         sprintf(json_body, "{ \"success\": \"file %s uploaded\" }", filename.c_str());
         request->send(200, "application/json", json_body);
         return;
-      default:
-        break;
     }
     return;
   }
