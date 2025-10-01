@@ -264,7 +264,7 @@ void SDFileServer::loop() {
 #endif  // USE_ESP_IDF
 }
 
-bool SDFileServer::canHandle(AsyncWebServerRequest *request) {
+bool SDFileServer::canHandle(AsyncWebServerRequest *request) const {
   ESP_LOGD(TAG, "can handle %s %u", request->url().c_str(),
            str_startswith(std::string(request->url().c_str()), this->build_prefix()));
   return str_startswith(std::string(request->url().c_str()), this->build_prefix());
