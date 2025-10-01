@@ -27,7 +27,7 @@ void SdMmc::setup() {
     this->power_ctrl_pin_->setup();
 
   esp_vfs_fat_sdmmc_mount_config_t mount_config = {
-      .format_if_mount_failed = false, .max_files = 5, .allocation_unit_size = 16 * 1024};
+      .format_if_mount_failed = false, .max_files = 5, .allocation_unit_size = 256 * 1024};
 
   sdmmc_host_t host = SDMMC_HOST_DEFAULT();
   host.slot = SDMMC_HOST_SLOT_0 | this->slot_;
