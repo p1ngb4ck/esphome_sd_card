@@ -80,6 +80,8 @@ SD_MMC_SCHEMA = cv.Schema(
             CONF_PULLUP: False,
             CONF_PULLDOWN: False,
         }),
+        cv.only_with_esp_idf,
+            only_on_variant(supported=[VARIANT_ESP32S2, VARIANT_ESP32S3, VARIANT_ESP32C6, VARIANT_ESP32P4]),
     }
 ).extend(cv.COMPONENT_SCHEMA)
 
@@ -136,8 +138,6 @@ def validate_config(config):
 
     if not CORE.is_esp32:
         return
-    if variant not in [VARIANT_ESP32, VARIANT_ESP32S3, VARIANT_ESP32C6, , VARIANT_ESP32P4]:
-        raise cv.Invalid(f"Unsupported variant {variant}")
 
     return config
 
