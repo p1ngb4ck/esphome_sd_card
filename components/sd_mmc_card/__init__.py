@@ -160,7 +160,7 @@ async def to_code(config):
 
     if mode_1bit := config.get(CONF_MODE_1BIT):
         cg.add(var.set_mode_1bit(mode_1bit))
-    if slot := config.get(CONF_SLOT):
+    if config[CONF_TYPE] == TYPE_SD_MMC and slot := config.get(CONF_SLOT):
         cg.add(var.set_slot(config[CONF_SLOT]))
     if clk_pin := config.get(CONF_CLK_PIN):
         cg.add(var.set_clk_pin(clk_pin))
