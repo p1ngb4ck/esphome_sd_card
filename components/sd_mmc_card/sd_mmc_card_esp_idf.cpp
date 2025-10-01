@@ -82,10 +82,6 @@ void SdMmc::setup() {
     }
     mark_failed();
   }
-#ifdef USE_TEXT_SENSOR
-  if (this->sd_card_type_text_sensor_ != nullptr)
-    this->sd_card_type_text_sensor_->publish_state(sd_card_type());
-#endif
 
   update_sensors();
 }
