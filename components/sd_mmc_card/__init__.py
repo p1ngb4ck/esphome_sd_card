@@ -68,8 +68,8 @@ def validate_raw_data(value):
 SD_MMC_SCHEMA = cv.Schema(
     {
         cv.GenerateID(): cv.declare_id(SdMmc),
-        cv.Required(CONF_CLK_PIN): pins.internal_gpio_pin_number,
-        cv.Required(CONF_CMD_PIN): pins.internal_gpio_pin_number,
+        cv.Required(CONF_CLK_PIN): pins.internal_gpio_output_pin_number,
+        cv.Required(CONF_CMD_PIN): pins.internal_gpio_output_pin_number,
         cv.Required(CONF_DATA0_PIN): pins.internal_gpio_pin_number,
         cv.Optional(CONF_DATA1_PIN): pins.internal_gpio_pin_number,
         cv.Optional(CONF_DATA2_PIN): pins.internal_gpio_pin_number,
