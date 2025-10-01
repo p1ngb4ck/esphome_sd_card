@@ -162,6 +162,8 @@ async def to_code(config):
         cg.add(var.set_mode_1bit(mode_1bit))
     if config[CONF_TYPE] == TYPE_SD_MMC and slot := config.get(CONF_SLOT):
         cg.add(var.set_slot(config[CONF_SLOT]))
+    elif config[CONF_TYPE] == TYPE_SD_SPI and slot := config.get(CONF_SLOT):
+        raise cv.Invalid(f"config option `slot` is only available for sd-mmc type")
     if clk_pin := config.get(CONF_CLK_PIN):
         cg.add(var.set_clk_pin(clk_pin))
     if cmd_pin := config.get(CONF_CMD_PIN):
@@ -178,8 +180,6 @@ async def to_code(config):
 
     if config[CONF_TYPE] == TYPE_SD_SPI:
         cg.add_define("SDMMC_USE_SDSPI")
-        # cg.add_library("esp_driver_sdspi", None)
-        # cg.add_library("sdmmc", None)
         await spi.register_spi_device(var, config)
         if pin := config.get(CONF_DATA1_PIN):
             cg.add(var.set_data1_pin(await cg.gpio_pin_expression(pin)))
