@@ -136,7 +136,7 @@ def validate_config(config):
 
     if not CORE.is_esp32:
         return
-    if variant not in [VARIANT_ESP32, VARIANT_ESP32S3, VARIANT_ESP32C6]:
+    if variant not in [VARIANT_ESP32, VARIANT_ESP32S3, VARIANT_ESP32C6, , VARIANT_ESP32P4]:
         raise cv.Invalid(f"Unsupported variant {variant}")
 
     return config
