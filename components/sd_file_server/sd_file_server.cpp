@@ -535,7 +535,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
       response->print("</a>");
     }
   }
-  response->print(F("</div>"));
+  response->print("</div>"));
 
   if (this->upload_enabled_)
     response->print("<div class=\"upload-form\"><form method=\"POST\" enctype=\""
@@ -571,7 +571,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
                     "}).catch(console.error);"
                     "} "
                     "</script>"
-                    "</body></html>"));
+                    "</body></html>");
 
   request->send(response);
 }
