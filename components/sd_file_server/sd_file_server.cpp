@@ -545,9 +545,9 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
                       "multipart/form-data"
 #endif
                       "\">"
-                      "<input type=\"file\" name=\"file\"><input type=\"submit\" value=\"upload\"></form></div>"));
+                      "<input type=\"file\" name=\"file\"><input type=\"submit\" value=\"upload\"></form></div>");
 
-  response->print(F("<table><thead><tr>"
+  response->print("<table><thead><tr>"
                     "<th>Name</th>"
                     "<th>Type</th>"
                     "<th>Size</th>"
