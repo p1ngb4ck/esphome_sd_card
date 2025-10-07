@@ -538,7 +538,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
   response->print(F("</div>"));
 
   if (this->upload_enabled_)
-    response->print(F("<div class=\"upload-form\"><form method=\"POST\" enctype=\""
+    response->print("<div class=\"upload-form\"><form method=\"POST\" enctype=\""
 #ifdef USE_ESP_IDF
                       "application/x-www-form-urlencoded"
 #else
@@ -552,7 +552,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
                     "<th>Type</th>"
                     "<th>Size</th>"
                     "<th>Actions</th>"
-                    "</tr></thead><tbody>"));
+                    "</tr></thead><tbody>");
 
   auto entries = this->sd_mmc_card_->list_directory_file_info(path, 0);
   for (auto const &entry : entries)
