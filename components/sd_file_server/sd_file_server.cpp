@@ -558,7 +558,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
   for (auto const &entry : entries)
     write_row(response, entry);
 
-  response->print(F("</tbody></table>"
+  response->print("</tbody></table>"
                     "<script>"
                     "function delete_file(path) {fetch(path, {method: \"DELETE\"});}"
                     "function download_file(path, filename) {"
