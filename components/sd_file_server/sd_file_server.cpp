@@ -399,7 +399,7 @@ void SDFileServer::write_row(AsyncResponseStream *response, sd_mmc_card::FileInf
 void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string const &path) const {
   ESP_LOGVV(TAG, "handling index");
   AsyncResponseStream *response = request->beginResponseStream("text/html");
-  response->print(F(R"(
+  response->print(R"(
   <!DOCTYPE html>
   <html lang=\"en\">
   <head>
@@ -520,7 +520,7 @@ void SDFileServer::handle_index(AsyncWebServerRequest *request, std::string cons
       <button onclick="window.location.href='/'">Go to web server</button>
     </div>
     <div class="breadcrumb">
-      <a href="/">Home</a>)"));
+      <a href="/">Home</a>)");
 
   std::string current_path = "/";
   std::string relative_path = Path::join(this->url_prefix_, Path::remove_root_path(path, this->root_path_));
