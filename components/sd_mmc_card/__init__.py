@@ -157,9 +157,9 @@ CONFIG_SCHEMA = cv.All(
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
-    add_idf_sdkconfig_option("CONFIG_VFS_SUPPORT_DIR", False)
-    add_idf_sdkconfig_option("CONFIG_VFS_SUPPORT_DIR", False)
-    add_idf_sdkconfig_option("CONFIG_VFS_SUPPORT_DIR", False)
+    add_idf_sdkconfig_option("CONFIG_VFS_SUPPORT_DIR", True)
+    add_idf_sdkconfig_option("CONFIG_VFS_SUPPORT_DIR", True)
+    add_idf_sdkconfig_option("CONFIG_VFS_SUPPORT_DIR", True)
     if mode_1bit := config.get(CONF_MODE_1BIT):
         cg.add(var.set_mode_1bit(mode_1bit))
     if clk_pin := config.get(CONF_CLK_PIN):
