@@ -14,7 +14,7 @@ from esphome.const import (
     CONF_SPI,
 )
 from esphome.core import CORE
-from esphome.components.esp32 import get_esp32_variant
+from esphome.components.esp32 import get_esp32_variant, add_idf_sdkconfig_option
 from esphome.components.esp32.const import (
     VARIANT_ESP32,
     VARIANT_ESP32S2,
